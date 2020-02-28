@@ -44,7 +44,7 @@ public class HttpServer {
                 //System.out.println("Recibí: " + inputLine);
 
                 if (inputLine.contains("GET")){
-                    System.out.println("Vamos bien: " + inputLine);
+                    //System.out.println("Vamos bien: " + inputLine);
                     //System.out.println(path);
 
                  String path="";
@@ -52,13 +52,13 @@ public class HttpServer {
                  path = getPath(path);
 
                  File archivo = new File(path);
-                if (archivo.exists()) {
+               
                 if (path.contains("PNG") || path.contains("png")){
                      getImagen(path, clientSocket.getOutputStream(),out);            
                 }    
                 else if (path.contains(".html") || path.contains(".js")){
                      getArchivo(path, clientSocket.getOutputStream()); 
-                }}
+                }
                 else {
                    outputLine = "HTTP/1.1 200 OK\r\n"
                    + "Content-Type: text/html\r\n"
@@ -109,7 +109,7 @@ public class HttpServer {
             writeImg.write(ArrBytes.toByteArray());
             System.out.println(System.getProperty("user.dir") + type);
         } catch (IOException e) {
-            System.out.println("r" + e.getMessage());
+            out.println("r" + e.getMessage());
         }
     }
 
